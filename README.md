@@ -1,6 +1,6 @@
 # GraphNeuralNetworksDGL
 
-Master Thesis Work on using graph neural networks and dgl library for the property prediction of small molecules. 
+Master Thesis Work on using graph neural networks for the property prediction of small molecules. 
 
 ## Getting started
 
