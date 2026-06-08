@@ -5,7 +5,13 @@ from glob import glob
 import re
 from typing import List
 
-from molecularGraphs import atomRef, getMolecule
+from gcnn.graphs.base import MolecularGraphs, get_molecule
+
+# Atom reference energies (Hartree) for atomization energy calculation
+# Extracted from MolecularGraphs class for standalone use in transforms
+_atom_ref = dict(
+    H=-0.500273, C=-37.846772, N=-54.583861, O=-75.064579, F=-99.718730
+)
 
 r""" Classes providing different flavours of database energy normalisation """
 
@@ -118,13 +124,13 @@ def analyseDataBase( directories: List[str] ) -> float:
 
     for file in files:
 
-        _, nAt, labels, _, properties, _ = getMolecule( file )
+        _, nAt, labels, _, properties, _ = get_molecule( file )
 
         moleculeRef = 0.0
 
         for n in range( nAt ):
 
-            moleculeRef += atomRef[labels[n]]
+            moleculeRef += _atom_ref[labels[n]]
 
         atomisationEnergy = properties[0,12] - moleculeRef
 

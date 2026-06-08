@@ -6,7 +6,11 @@ import os
 import torch
 from torch_geometric.loader import DataLoader
 
-from calculateEnergyAndForces import calculateEnergyAndForces
+try:
+    from gcnn.training.forces import calculateEnergyAndForces
+except ImportError:
+    def calculateEnergyAndForces(*args, **kwargs):
+        raise NotImplementedError("Force calculation module not yet implemented")
 
 
 def fit_model(
@@ -65,7 +69,9 @@ def fit_model(
 
     model.train()
     
-    logFile = "/content/drive/MyDrive/Colab Notebooks/MoleculeDB/runs/"
+    from gcnn.paths import OUTPUT_DIR, ensure_output_dir
+    ensure_output_dir()
+    logFile = str(OUTPUT_DIR) + "/"
     file = open(logFile + "loss.csv", "w")
     file.write("epoch,train-loss,validation-loss" + os.linesep)
 

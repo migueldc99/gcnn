@@ -5,7 +5,7 @@ import random
 import torch
 from torch_geometric.data import Data, Dataset
 
-from molecular_graphs import MolecularGraphs
+from gcnn.graphs.base import MolecularGraphs
 
 featureList = ["atomic_number"]
 

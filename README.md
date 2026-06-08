@@ -1,42 +1,55 @@
-# GraphNeuralNetworks
+# Graph Convolutional Neural Networks (GCNN)
 
-## Name
-Graph Convolutional Neural Networks (GCNNs)
+Property prediction for small molecules using Graph Convolutional Neural Networks.
 
-## Description
-Work on using graph neural networks for the property prediction of small molecules.
+## Project Structure
+
+```
+gcnn/
+├── config/             # Experiment configuration (YAML)
+├── data/               # Molecular datasets (not versioned)
+├── notebooks/          # Jupyter notebooks (data prep → training → analysis)
+├── outputs/            # Training runs, logs, predictions (not versioned)
+└── src/gcnn/           # Installable Python package
+    ├── graphs/         # Molecular graph construction (ABC + implementations)
+    ├── training/       # Training loop, callbacks, transforms
+    ├── features.py     # Gaussian basis feature engineering
+    ├── model.py        # GCNN architecture (CGConv layers)
+    ├── dataset.py      # PyTorch Geometric dataset class
+    ├── paths.py        # Centralized path resolution
+    └── utils.py        # Utilities (parameter counting, etc.)
+```
+
+## Installation
+
+```bash
+# Clone and install in editable mode
+git clone <repo-url>
+cd gcnn
+pip install -e .
+
+# For development (adds matplotlib, jupyter, pandas, etc.)
+pip install -e ".[dev]"
+```
+
+## Usage
+
+1. **Prepare data**: Download the QM9 dataset (see `data/README.md`), then run `notebooks/1_gen_database.ipynb` to split into train/validation/test.
+2. **Train model**: Run `notebooks/2_train_model.ipynb` (configuration via `config/sample.yml`).
+3. **Analyze results**: Run `notebooks/3_graphics.ipynb` to visualize training curves and predictions.
 
 ## Dependencies
 
+Managed via `pyproject.toml`. Core requirements:
+- PyTorch, PyTorch Geometric (+ torch-scatter, torch-sparse)
+- NumPy, SciPy, scikit-learn
+- Mendeleev (periodic table data)
+- PyYAML, TensorBoard
 
-## Running the code
+## Authors
 
-
-## Authors and acknowledgment
 Miguel Dalmau Casañal (migueldcj6@gmail.com)
 
 ## License
-MIT License
 
-Copyright (c) 2022 Miguel  Dalmau (migueldcj6@gmail.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+MIT License (see LICENSE file)

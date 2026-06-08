@@ -6,7 +6,7 @@ import re
 import bz2
 import pickle
 
-from molecularGraphs import generateNodeFeatures, Molecule2Graph
+from gcnn.graphs.base import MolecularGraphs
 
 """
 This script transforms molecule files into graph data and stores the graph info into a file, one for 

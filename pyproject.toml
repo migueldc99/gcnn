@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gcnn"
+version = "0.1.0"
+description = "Graph Convolutional Neural Networks for molecular property prediction"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Miguel Dalmau Casañal"},
+]
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0",
+    "torch-geometric>=2.3",
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "scikit-learn>=1.0",
+    "mendeleev>=0.9",
+    "pyyaml>=6.0",
+    "tensorboard>=2.10",
+]
+
+[project.optional-dependencies]
+# torch-scatter and torch-sparse must be installed AFTER torch.
+# See: https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
+pyg = [
+    "torch-scatter",
+    "torch-sparse",
+]
+dev = [
+    "matplotlib>=3.5",
+    "pandas>=1.4",
+    "jupyter>=1.0",
+    "tqdm>=4.60",
+    "numba>=0.56",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+gcnn = ["py.typed"]

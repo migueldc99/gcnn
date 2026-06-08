@@ -1,0 +1,48 @@
+# ==== Python ====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# ==== Virtual environments ====
+.venv/
+venv/
+env/
+ENV/
+
+# ==== Jupyter ====
+.ipynb_checkpoints/
+
+# ==== Data (never version large datasets) ====
+data/*
+!data/.gitkeep
+!data/README.md
+
+# ==== Outputs / Runs ====
+outputs/*
+!outputs/.gitkeep
+
+# ==== Dataset files (safety net) ====
+*.tar
+*.tar.gz
+*.xyz
+*.bz2
+
+# ==== IDE / Editor ====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==== OS ====
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# ==== Misc ====
+STOPFLAG.yml

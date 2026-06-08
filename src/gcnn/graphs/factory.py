@@ -1,11 +1,10 @@
 
 from typing import List
 
-from features import Features
-from covalent_molecular_graphs import CovalentMolecularGraphs
-from generalised_molecular_graphs import GeneralisedMolecularGraphs
-from geometric_molecular_graphs import GeometricMolecularGraphs
-from molecular_graphs import MolecularGraphs
+from gcnn.features import Features
+from gcnn.graphs.covalent import CovalentMolecularGraphs
+from gcnn.graphs.generalised import GeneralisedMolecularGraphs
+from gcnn.graphs.base import MolecularGraphs
 
 def set_up_molecular_graphs(
     graph_type: str,
@@ -50,14 +49,9 @@ def set_up_molecular_graphs(
 
     if graph_type == "geometric":
 
-        graphs = GeometricMolecularGraphs(
-            edge_features,
-            bond_angle_features,
-            dihedral_features,
-            node_feature_list,
-            n_total_node_features,
-            n_max_neighbours,
-            pooling,
+        raise NotImplementedError(
+            "GeometricMolecularGraphs is not yet implemented. "
+            "Use 'covalent' or 'generalised' graph_type instead."
         )
 
     elif graph_type == "covalent":

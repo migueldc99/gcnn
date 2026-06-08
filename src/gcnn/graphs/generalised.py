@@ -6,9 +6,9 @@ import torch
 from torch_geometric.data import Data
 from mendeleev import element
 
-from features import Features
-from molecular_graphs import get_dihedral_angle, get_molecule
-from molecular_graphs import MolecularGraphs
+from gcnn.features import Features
+from gcnn.graphs.base import get_dihedral_angle, get_molecule
+from gcnn.graphs.base import MolecularGraphs
 
 class GeneralisedMolecularGraphs(MolecularGraphs):
 
