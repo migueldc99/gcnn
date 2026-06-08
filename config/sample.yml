@@ -68,8 +68,9 @@ callbacks:
 
 descriptionText: No data transformation
 
-trainDir: '/content/drive/MyDrive/Colab Notebooks/MoleculeDB/training_set'
-valDir: '/content/drive/MyDrive/Colab Notebooks/MoleculeDB/validation_set'
-testDir: '/content/drive/MyDrive/Colab Notebooks/MoleculeDB/test_set'
+# trainDir, valDir, testDir: uncomment below ONLY to override gcnn.paths defaults
+# trainDir: '/custom/path/to/training_set'
+# valDir: '/custom/path/to/validation_set'
+# testDir: '/custom/path/to/test_set'
 
 transformData: False

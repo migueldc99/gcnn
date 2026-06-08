@@ -1,18 +1,10 @@
 """Centralized path resolution for the GCNN project.
 
-Supports both local execution and Google Colab environments.
 Override the data directory by setting the GCNN_DATA_DIR environment variable.
 """
 
 import os
 from pathlib import Path
-
-# Detect environment
-try:
-    import google.colab  # noqa: F401
-    IN_COLAB = True
-except ImportError:
-    IN_COLAB = False
 
 # Project root: two levels up from this file (src/gcnn/paths.py -> project root)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -22,8 +14,6 @@ _data_dir_override = os.environ.get("GCNN_DATA_DIR")
 
 if _data_dir_override:
     DATA_DIR = Path(_data_dir_override)
-elif IN_COLAB:
-    DATA_DIR = Path("/content/drive/MyDrive/Colab Notebooks/MoleculeDB")
 else:
     DATA_DIR = PROJECT_ROOT / "data"
 
