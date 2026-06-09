@@ -132,7 +132,8 @@ def analyseDataBase( directories: List[str] ) -> float:
 
             moleculeRef += _atom_ref[labels[n]]
 
-        atomisationEnergy = properties[0,12] - moleculeRef
+        # Index 10 = U0 (internal energy at 0 K), consistent with covalent.py/generalised.py
+        atomisationEnergy = properties[0,10] - moleculeRef
 
         e.append( atomisationEnergy )
 
