@@ -25,9 +25,9 @@ def get_dihedral_angle(
     # vkiij = np.cross( rki, rij )
     vkiij0 = rki[1] * rij[2] - rki[2] * rij[1]
     vkiij1 = rki[2] * rij[0] - rki[0] * rij[2]
-    vkiij2 = rki[0] * rij[1] - rki[1] * rij[1]
+    vkiij2 = rki[0] * rij[1] - rki[1] * rij[0]
 
-    vkiij = np.array([vkiij0, vkiij1, vkiij2], dtype=np.float)
+    vkiij = np.array([vkiij0, vkiij1, vkiij2], dtype=float)
 
     nkiij = np.sqrt(np.dot(vkiij, vkiij))
 
@@ -36,7 +36,7 @@ def get_dihedral_angle(
     vijjl1 = rij[2] * rjl[0] - rij[0] * rjl[2]
     vijjl2 = rij[0] * rjl[1] - rij[1] * rjl[0]
 
-    vijjl = np.array([vijjl0, vijjl1, vijjl2], dtype=np.float)
+    vijjl = np.array([vijjl0, vijjl1, vijjl2], dtype=float)
 
     nijjl = np.sqrt(np.dot(vijjl, vijjl))
 
