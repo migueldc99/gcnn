@@ -29,6 +29,7 @@ def fit_model(
     callbacks: List[object] = None,
     check_point_path: str = "chkpt.tar",
     check_point_freq: int = 10,
+    loss_path: str = None,
 ) -> None:
 
     r"""
@@ -68,11 +69,12 @@ def fit_model(
     factor = float(n_train) / float(n_validation)
 
     model.train()
-    
+
     from gcnn.paths import OUTPUT_DIR, ensure_output_dir
     ensure_output_dir()
-    logFile = str(OUTPUT_DIR) + "/"
-    file = open(logFile + "loss.csv", "w")
+    if loss_path is None:
+        loss_path = str(OUTPUT_DIR) + "/loss.csv"
+    file = open(loss_path, "w")
     file.write("epoch,train-loss,validation-loss" + os.linesep)
 
     for epoch in range(n_epochs):
