@@ -83,7 +83,6 @@ def set_up_molecular_graphs(
     else:  # we make this the default case
 
         graphs = CovalentMolecularGraphs(
-            species,
             edge_features,
             bond_angle_features,
             dihedral_features,
