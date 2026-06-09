@@ -31,11 +31,15 @@ EdgeFeatures:
    sigma: 0.01
 
 AngleFeatures:
+   theta_min: 0.0
+   theta_max: 3.14159
    n_features: 10
    sigma: 0.1
    norm: True
 
 DihedralFeatures:
+   theta_min: 0.0
+   theta_max: 3.14159
    n_features: 5
    sigma: 0.1
    norm: True
@@ -55,7 +59,8 @@ transformData: False
 calculateForces: False
 
 # the following command specifies if the model.state_dict() and optimizer.state_dict() are to be loaded
-# from a checkpoint file from a previous run 
+# from a checkpoint file from a previous run
+loadModel: False
 # loadModel: '6nn-2gcl-3fcl-12082022-145104.tar'
 
 # this only gives the starting learning rate iff loadModel = False; otherwise it is read from checkpoint file

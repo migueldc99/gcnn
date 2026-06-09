@@ -1,7 +1,6 @@
 import torch
 import numpy as np
 from torch_geometric.data import Data
-from typing import List
 
 # Atom reference energies (Hartree) for atomization energy calculation
 # Extracted from MolecularGraphs class for standalone use in transforms

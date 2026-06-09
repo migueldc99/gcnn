@@ -165,10 +165,10 @@ def set_up_features(input_data: Dict) -> Tuple[Features]:
     if dihedral_features:
 
         theta_min = dihedral_features.get("theta_min", 0.0)
-        theta_max = dihedral_features.get("theta_min", np.pi)
-        n_dihedral = angle_features.get("n_features", 10)
-        sigma = angle_features.get("sigma", 0.1)
-        norm = angle_features.get("norm", True)
+        theta_max = dihedral_features.get("theta_max", np.pi)
+        n_dihedral = dihedral_features.get("n_features", 10)
+        sigma = dihedral_features.get("sigma", 0.1)
+        norm = dihedral_features.get("norm", True)
 
         dihedral_angle = Features(
             x_min=theta_min, x_max=theta_max, n_features=n_dihedral,
