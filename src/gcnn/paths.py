@@ -23,7 +23,7 @@ DATASET = DATA_DIR / "dataset"
 TRAINING_SET = DATA_DIR / "training_set"
 VALIDATION_SET = DATA_DIR / "validation_set"
 TEST_SET = DATA_DIR / "test_set"
-PROCESSED_DIR = DATA_DIR / "processed"
+PROCESSED_DIR = DATA_DIR / "processed_graphs"
 
 # Configuration and outputs
 CONFIG_DIR = PROJECT_ROOT / "config"
