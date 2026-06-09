@@ -23,6 +23,7 @@ DATASET = DATA_DIR / "dataset"
 TRAINING_SET = DATA_DIR / "training_set"
 VALIDATION_SET = DATA_DIR / "validation_set"
 TEST_SET = DATA_DIR / "test_set"
+PROCESSED_DIR = DATA_DIR / "processed"
 
 # Configuration and outputs
 CONFIG_DIR = PROJECT_ROOT / "config"
@@ -31,7 +32,7 @@ OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 def ensure_data_dirs() -> None:
     """Create all data subdirectories if they don't exist."""
-    for d in [ORIGINAL_DATASET, DATASET, TRAINING_SET, VALIDATION_SET, TEST_SET]:
+    for d in [ORIGINAL_DATASET, DATASET, TRAINING_SET, VALIDATION_SET, TEST_SET, PROCESSED_DIR]:
         d.mkdir(parents=True, exist_ok=True)
 
 
