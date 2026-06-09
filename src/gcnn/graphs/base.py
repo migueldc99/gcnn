@@ -40,7 +40,12 @@ def get_dihedral_angle(
 
     nijjl = np.sqrt(np.dot(vijjl, vijjl))
 
+    # Guard against collinear atoms (undefined dihedral)
+    if nkiij < 1.0e-10 or nijjl < 1.0e-10:
+        return 0.0
+    
     cosphi = np.dot(vkiij, vijjl) / (nkiij * nijjl)
+    cosphi = np.clip(cosphi, -1.0, 1.0)
 
     phi = np.arccos(cosphi)
 
