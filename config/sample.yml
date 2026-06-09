@@ -6,6 +6,7 @@ debug: False
 
 nGraphConvolutionLayers: 2
 nFullyConnectedLayers: 2
+nNeurons: 15
 
 # the type of graph definition to be used 
 graphType: 'covalent'
@@ -46,6 +47,10 @@ randomSeed: 42
 nTrainMaxEntries: 8000
 nValMaxEntries: 800
 
+# Data transform applied to target energies during training.
+# Options: 'standardize' (zero mean, unit variance), 'scale' (to [-1,1]), or False (none)
+transformData: False
+
 # the following command should be set to true if force information is to be used in the fitting of the model
 calculateForces: False
 
@@ -72,5 +77,3 @@ descriptionText: No data transformation
 # trainDir: '/custom/path/to/training_set'
 # valDir: '/custom/path/to/validation_set'
 # testDir: '/custom/path/to/test_set'
-
-transformData: False

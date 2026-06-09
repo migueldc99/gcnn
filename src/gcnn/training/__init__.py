@@ -2,10 +2,12 @@
 
 from gcnn.training.callbacks import set_up_callbacks, EarlyStopping, LRScheduler, UserStopping
 from gcnn.training.fit import fit_model
+from gcnn.training.transforms import setup_transform
 
 __all__ = [
     "fit_model",
     "set_up_callbacks",
+    "setup_transform",
     "EarlyStopping",
     "LRScheduler",
     "UserStopping",
