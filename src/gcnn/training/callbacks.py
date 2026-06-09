@@ -1,6 +1,5 @@
-import os
-from os.path import exists
 import re
+from pathlib import Path
 from typing import Dict, List
 
 import torch
@@ -114,31 +113,23 @@ class UserStopping:
 
     def __init__(self) -> None:
 
-        self.flag_file = "STOPFLAG.yml"
+        self._flag_path = Path("STOPFLAG.yml")
         self.early_stop = False
 
-        # if the stopfile exists, remove it; it was probably left
-        # over from a previous simulation
+        # Remove any leftover stop-flag from a previous run
+        self._flag_path.unlink(missing_ok=True)
 
-        if exists(self.flag_file):
-            os.system("rm -f " + self.flag_file)
-
-        # flag_file = open(self.flag_file, "wt")
-        with open( self.flag_file, 'wt' ) as flag_file:
-            flag_file.write("STOPFLAG: False")
+        # Create a fresh flag file set to False
+        self._flag_path.write_text("STOPFLAG: False")
 
     def __call__(self, val_loss: float) -> None:
 
-        # stop_stream = open(self.flag_file, "rt")
-        with open(self.flag_file, 'rt') as stop_stream:
-            stream = yaml.load(stop_stream, Loader=yaml.Loader)
-            self.early_stop = stream["STOPFLAG"]
+        stream = yaml.safe_load(self._flag_path.read_text())
+        self.early_stop = stream["STOPFLAG"]
 
         if self.early_stop:
             print("INFO: User instructed stopping")
-            os.system("rm -f " + self.flag_file)
-            # we remove the stop-flag file so that it is not
-            # there when we next run the program
+            self._flag_path.unlink(missing_ok=True)
 
 
 def set_up_callbacks(callback_list: Dict, optimizer: Optimizer) -> List:
